@@ -18,3 +18,7 @@ To run this project you need to have the following installed:
 ### Frontend
 - Run `yarn install` or `npm install` in `frontend/src/main/resources/noona-assignment`
 - Run `ng serve` which serves the frontend assets at `localhost:4200` for the API to work you have to have the backend running as the frontend proxies the API calls to the backend server
+
+### Further Instructions
+
+- Further instructions can be found in the landing page of the application
