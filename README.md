@@ -13,7 +13,9 @@ To run this project you need to have the following installed:
 
 ### Backend
 - If using IDE such as IntelliJ IDEA you can run the Spring AssignmentApplication main class inside the IDE (modified code will be hotswapped after compile)
-- If you wish to run the project in terminal you can run `mvn spring-boot:run` inside the `backend` project
+- If you wish to run the project in terminal you can run 
+    - `mvn clean install` inside the root folder first and then,
+    - `mvn spring-boot:run` inside the `backend` project
 
 ### Frontend
 - Run `yarn install` or `npm install` in `frontend/src/main/resources/noona-assignment`
