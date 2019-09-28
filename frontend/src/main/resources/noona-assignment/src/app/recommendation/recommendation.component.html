@@ -1,0 +1,18 @@
+<h1 mat-dialog-title [style.color]="recommendation.alert ? 'red' : 'black'">Recommendation</h1>
+<div mat-dialog-content class="content" [style.color]="recommendation.alert ? 'red' : 'black'">
+  <div>
+    <mat-icon aria-label="icon">{{ recommendation.alert ? 'warning' : 'info' }}</mat-icon>
+  </div>
+  <div>
+   <p>{{ recommendation.message }}</p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <span class="spacer"></span>
+  <button mat-raised-button 
+    color="primary" 
+    [style.backgroundColor]="recommendation.alert ? 'red' : ''" 
+    (click)="close()">
+    Thanks
+  </button>
+</div>

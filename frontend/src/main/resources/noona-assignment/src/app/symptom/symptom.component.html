@@ -1,0 +1,49 @@
+<div class="symptoms-container">
+  <form [formGroup]="symptomForm" novalidate (ngSubmit)="submit(symptomForm.value)">
+  <mat-card class="card-container">
+    <h3>Symptoms Report</h3>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="description" id="description"></textarea>
+      <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+    </mat-form-field>
+    <h4>Pain Intensity</h4>
+    <mat-slider min="1" max="10" step="1" thumbLabel formControlName="intensity" id="intensity"></mat-slider>
+    <h4>Date Observed</h4>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateObserved" id="dateObserved">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="hasError('dateObserved', 'required')">Date Observed is required</mat-error>
+    </mat-form-field>
+    <div class="actions">
+      <span class="spacer"></span>
+      <span class="spacer"></span>
+      <span class="spacer"></span>
+      <span class="spacer"></span>
+      <button mat-button color="primary" [disabled]="!symptomForm.valid">Submit</button>
+      <button mat-button color="warn" (click)="clear()">Clear</button>
+    </div>
+  </mat-card>
+  </form>
+  <mat-card class="card-container">
+    <h3>Past Symptoms Report:</h3>
+    <mat-selection-list #pastSymptoms class="list">
+      <mat-list-option *ngFor="let report of pastSymptomsReport; last as last" [value]=report>
+        <h4 mat-line>Description: {{report.description}}</h4>
+        <p mat-line>Date: (Observed) {{report.dateObserved | date}} (Reported) {{report.createdDate | date}}</p>
+        <p mat-line>Pain Intensity: {{report.intensity}}</p>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-option>
+    </mat-selection-list>
+    <div class="actions">
+      <div>
+        <h3>Selected: {{pastSymptoms.selectedOptions.selected.length}}</h3>
+      </div>
+      <div class="delete-icon">
+        <button mat-icon-button aria-label="delete" (click)="deleteSymptom(pastSymptoms.selectedOptions.selected)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
